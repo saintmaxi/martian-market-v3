@@ -141,7 +141,7 @@ const selectProject = async (address) => {
 const approveTokenToMarket = async () => {
     const token = new ethers.Contract(currentTokenAddress, baseTokenAbi(), signer);
     await token.approve(marketAddress, maxInt).then(async (tx_) => {
-        await waitForTransaction(tx_);
+        await waitForTransaction(tx_, true);
         $("#approval-button").html(`Approving<span class="one">.</span><span class="two">.</span><span class="three">.</span>`)
     });
 }
@@ -286,6 +286,9 @@ const purchase = async (tokenAddress, id) => {
     catch (error) {
         if ((error.message).includes("Already purchased")) {
             await displayErrorMessage(`Error: You already purchased a slot!`);
+        }
+        else if ((error.message).includes("Not allowed to purchase!")) {
+            await displayErrorMessage(`Error: Must hold a permitted collection!`);
         }
         else if ((error.message).includes("This WLVendingItem does not exist!")) {
             await displayErrorMessage(`Error: Item does not exist!`);
@@ -512,10 +515,10 @@ const loadPartnerCollections = async () => {
 // Processing txs
 
 // After Tx Hook
-const waitForTransaction = async (tx_) => {
+const waitForTransaction = async (tx_, approval = false) => {
     startLoading(tx_);
     provider.once(tx_.hash, async (transaction_) => {
-        await endLoading(tx_, transaction_.status);
+        await endLoading(tx_, transaction_.status, approval);
     });
 };
 
@@ -548,14 +551,16 @@ function startLoading(tx) {
     pendingTransactions.add(tx);
 }
 
-async function endLoading(tx, txStatus) {
+async function endLoading(tx, txStatus, approval) {
     let txHash = tx.hash;
     $(`#loading-div-${txHash}`).html("");
     let status = txStatus == 1 ? "SUCCESS" : "ERROR";
     $(`#loading-div-${txHash}`).addClass("blinking");
     if (txStatus == 1) {
         $(`#loading-div-${txHash}`).addClass("success");
-        await showTransactionResult(1);
+        if (!approval) {
+            await showTransactionResult(1);
+        }
     }
     else if (txStatus == 0) {
         $(`#loading-div-${txHash}`).addClass("failure");
