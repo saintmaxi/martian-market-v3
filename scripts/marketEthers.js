@@ -196,12 +196,6 @@ const checkTokenApproval = async () => {
             }
         }
 
-        if (Number(await token.allowance(userAddress, marketAddress)) >= maxInt) {
-            $("#approval").addClass("hidden");
-        }
-        else {
-            $("#approval").removeClass("hidden");
-        }
         if ($("#approval").hasClass("hidden") && $("#set-discord").hasClass("hidden")) {
             $("#onboarding-alert").addClass("hidden");
             $("#onboarding-wrapper").addClass("hidden");
@@ -592,56 +586,57 @@ const loadCollections = async () => {
                 }
             }));
         }
+    }
 
-        if (gatedCollections.includes(currentTokenAddress)) {
-            const numCollections = Number(await marketGated.getWLVendingItemsLength(currentTokenAddress));
-            let allItems;
-            if (numCollections > 0) {
-                allItems = await marketGated.getWLVendingObjectsPaginated(currentTokenAddress, 0, numCollections - 1);
-            }
-            else {
-                allItems = [];
-            }
-            let allItemIds = Array.from(Array(numCollections).keys());
-            const chunks = splitArrayToChunks(allItemIds, 5);
+    if (gatedCollections.includes(currentTokenAddress)) {
+        const numCollections = Number(await marketGated.getWLVendingItemsLength(currentTokenAddress));
+        let allItems;
+        if (numCollections > 0) {
+            allItems = await marketGated.getWLVendingObjectsPaginated(currentTokenAddress, 0, numCollections - 1);
+        }
+        else {
+            allItems = [];
+        }
+        let allItemIds = Array.from(Array(numCollections).keys());
+        const chunks = splitArrayToChunks(allItemIds, 5);
 
 
-            for (const chunk of chunks) {
-                await Promise.all(chunk.map(async (id) => {
-                    // WL data from contract
-                    let WLinfo = allItems[id];
-                    let collectionPrice = Number(formatEther(WLinfo.price));
-                    let purchased = await marketGated.contractToWLPurchased(currentTokenAddress, id, userAddress);
+        for (const chunk of chunks) {
+            await Promise.all(chunk.map(async (id) => {
+                // WL data from contract
+                let WLinfo = allItems[id];
+                let collectionPrice = Number(formatEther(WLinfo.price));
+                let purchased = await marketGated.contractToWLPurchased(currentTokenAddress, id, userAddress);
 
-                    // Data from JSON file
-                    let maxSlots = WLinfo.amountAvailable;
-                    let minted = WLinfo.amountPurchased;
-                    let started = (Date.now() / 1000) > WLinfo.startTime;
-                    let valid = WLinfo.endTime > (Date.now() / 1000);
-                    let imageUri = (WLinfo.imageUri).includes("https://") ? WLinfo.imageUri : `https://${WLinfo.imageUri}`;
-                    let projectUri = (WLinfo.projectUri).includes("https://") ? WLinfo.projectUri : `https://${WLinfo.projectUri}`;
+                // Data from JSON file
+                let maxSlots = WLinfo.amountAvailable;
+                let minted = WLinfo.amountPurchased;
+                let started = (Date.now() / 1000) > WLinfo.startTime;
+                let valid = WLinfo.endTime > (Date.now() / 1000);
+                let imageUri = (WLinfo.imageUri).includes("https://") ? WLinfo.imageUri : `https://${WLinfo.imageUri}`;
+                let projectUri = (WLinfo.projectUri).includes("https://") ? WLinfo.projectUri : `https://${WLinfo.projectUri}`;
 
-                    if (started && valid) {
-                        liveListingsGated.push(id);
-                        liveTimerPendingGated.push(true);
-                        dateString = `Ends ${(new Date(WLinfo.endTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.endTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                if (started && valid) {
+                    liveListingsGated.push(id);
+                    liveTimerPendingGated.push(true);
+                    dateString = `Ends ${(new Date(WLinfo.endTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.endTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                }
+                else if (!started && valid) {
+                    pendingListingsGated.push(id);
+                    pendingTimerPendingGated.push(true);
+                    dateString = `Starts ${(new Date(WLinfo.startTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.startTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                }
+
+                if (minted != maxSlots && valid) {
+                    numLive += 1;
+                    let button;
+                    if (purchased) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">PURCHASED!</button>`;
                     }
-                    else if (!started && valid) {
-                        pendingListingsGated.push(id);
-                        pendingTimerPendingGated.push(true);
-                        dateString = `Starts ${(new Date(WLinfo.startTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.startTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                    else {
+                        button = `<button class="mint-prompt-button button" id="${id}-mint-button-gated" onclick="purchase('${currentTokenAddress}', ${id}, true)">PURCHASE</button>`;
                     }
-
-                    if (minted != maxSlots && valid) {
-                        numLive += 1;
-                        let button;
-                        if (purchased) {
-                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">PURCHASED!</button>`;
-                        }
-                        else {
-                            button = `<button class="mint-prompt-button button" id="${id}-mint-button-gated" onclick="purchase('${currentTokenAddress}', ${id}, true)">PURCHASE</button>`;
-                        }
-                        let fakeJSX = `<div class="partner-collection" id="project-${id}-gated">
+                    let fakeJSX = `<div class="partner-collection" id="project-${id}-gated">
                                     <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
                                     <h4 class="end-time" id="timer-${id}-gated"><span class="one">.</span><span class="two">.</span><span class="three">.</span></h4>
                                     <img class="collection-img" src="${imageUri}">
@@ -658,21 +653,21 @@ const loadCollections = async () => {
                                     ${button}
                                     </div>`
 
-                        idToLiveJSX.set(id, fakeJSX);
+                    idToLiveJSX.set(id, fakeJSX);
+                }
+                else {
+                    numPast += 1;
+                    let button;
+                    if (purchased) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">PURCHASED!</button>`;
                     }
-                    else {
-                        numPast += 1;
-                        let button;
-                        if (purchased) {
-                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">PURCHASED!</button>`;
-                        }
-                        else if (!valid) {
-                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">EXPIRED</button>`;
-                        }
-                        else if (minted == maxSlots) {
-                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">SOLD OUT</button>`;
-                        }
-                        let fakeJSX = `<div class="partner-collection" id="project-${id}">
+                    else if (!valid) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">EXPIRED</button>`;
+                    }
+                    else if (minted == maxSlots) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">SOLD OUT</button>`;
+                    }
+                    let fakeJSX = `<div class="partner-collection" id="project-${id}">
                                     <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
                                     <img class="collection-img" src="${imageUri}">
                                     <div class="collection-info">
@@ -685,32 +680,28 @@ const loadCollections = async () => {
                                     ${button}
                                     </div>`
 
-                        idToPastJSX.set(id + numUngated, fakeJSX);
-                    }
-                }));
-            }
-
-
-
+                    idToPastJSX.set(id + numUngated, fakeJSX);
+                }
+            }));
         }
-
-        let liveIds = Array.from(idToLiveJSX.keys()).map(Number).sort(function (a, b) { return b - a });
-        let pastIds = Array.from(idToPastJSX.keys()).map(Number).sort(function (a, b) { return b - a });
-        for (const liveId of liveIds) {
-            liveJSX += idToLiveJSX.get(liveId);
-        }
-        for (const pastId of pastIds) {
-            pastJSX += idToPastJSX.get(pastId);
-        }
-
-        $("#live-collections").empty();
-        $("#past-collections").empty();
-        $("#live-collections").append(liveJSX);
-        $("#past-collections").append(pastJSX);
-        $("#num-live").html(`<br>(${numLive})`);
-        $("#num-past").html(`<br>(${numPast})`);
-        loadedCollections = true;
     }
+
+    let liveIds = Array.from(idToLiveJSX.keys()).map(Number).sort(function (a, b) { return b - a });
+    let pastIds = Array.from(idToPastJSX.keys()).map(Number).sort(function (a, b) { return b - a });
+    for (const liveId of liveIds) {
+        liveJSX += idToLiveJSX.get(liveId);
+    }
+    for (const pastId of pastIds) {
+        pastJSX += idToPastJSX.get(pastId);
+    }
+
+    $("#live-collections").empty();
+    $("#past-collections").empty();
+    $("#live-collections").append(liveJSX);
+    $("#past-collections").append(pastJSX);
+    $("#num-live").html(`<br>(${numLive})`);
+    $("#num-past").html(`<br>(${numPast})`);
+    loadedCollections = true;
 }
 
 const updateSupplies = async () => {
