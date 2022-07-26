@@ -6,10 +6,14 @@ const baseTokenAbi = () => {
     return `[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"burnByController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address[]","name":"to_","type":"address[]"},{"internalType":"uint256[]","name":"amounts_","type":"uint256[]"}],"name":"multiTransfer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address[]","name":"from_","type":"address[]"},{"internalType":"address[]","name":"to_","type":"address[]"},{"internalType":"uint256[]","name":"amounts_","type":"uint256[]"}],"name":"multiTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from_","type":"address"},{"internalType":"address","name":"to_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{ "inputs": [], "name": "owner", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }]`;
 };
 
-const marketAddressMainnet = "0x1b0EfFE43fe9b2A9B8Ada6060C1431cC7E5d77a3";
+const marketAddressMainnet = "0xFD8f4aC172457FD30Df92395BC69d4eF6d92eDd4";
+const marketAddressMainnetGated = "0x1b0EfFE43fe9b2A9B8Ada6060C1431cC7E5d77a3";
 const marketAddressPolygon = "0x0225960D274966524C4Fafe3804386Df0F6B8742";
+const marketAddressPolygonGated = "0x6A8E985890B3E4aa56b3A735577DEfAA89f28cD0";
 const marketAddressOptimism = "0x4D479aAA35fc98DDd836f0270C46e4C52d93C731";
+const marketAddressOptimismGated = "0x4D479aAA35fc98DDd836f0270C46e4C52d93C731";
 const marketAddressArbitrum = "0x6c1b3eBd9Eb46679662b2ABDD28325B32C892FEa";
+const marketAddressArbitrumGated = "0x1A5f06Fb0bAD93c5A92Ce99c295765bA49475A76";
 const marketAddressTestnet = "0x07f4de9cDFf4FB65AC00166A1090D5a750FFA25b";
 const marketAbi = () => {
     return `[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":false,"internalType":"address","name":"registerer_","type":"address"},{"indexed":false,"internalType":"bool","name":"bool_","type":"bool"}],"name":"ContractAdministered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":false,"internalType":"address","name":"registerer_","type":"address"},{"indexed":false,"internalType":"uint256","name":"registrationPrice_","type":"uint256"}],"name":"ContractRegistered","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"indexed":false,"internalType":"address","name":"unstuckOwner_","type":"address"}],"name":"GovernorUnstuckOwner","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"indexed":false,"internalType":"address","name":"admin_","type":"address"},{"indexed":false,"internalType":"bool","name":"bool_","type":"bool"}],"name":"MarketAdminManaged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"indexed":false,"internalType":"bool","name":"bool_","type":"bool"}],"name":"OperatorManaged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":false,"internalType":"address","name":"registerer_","type":"address"},{"indexed":false,"internalType":"string","name":"projectName_","type":"string"},{"indexed":false,"internalType":"string","name":"tokenImage_","type":"string"}],"name":"ProjectInfoPushed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"indexed":false,"internalType":"bool","name":"bool_","type":"bool"}],"name":"RequiresTokenManaged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"indexed":false,"internalType":"address","name":"token_","type":"address"}],"name":"TokenManaged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"indexed":false,"internalType":"address","name":"treasury_","type":"address"}],"name":"TreasuryManaged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"indexed":false,"internalType":"struct MartianMarketWL.WLVendingItem","name":"item_","type":"tuple"}],"name":"WLVendingItemAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"gifted_","type":"address"},{"indexed":false,"internalType":"uint256","name":"index_","type":"uint256"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"string","name":"tokenName","type":"string"},{"internalType":"string","name":"tokenImageUri","type":"string"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"price","type":"uint256"}],"indexed":false,"internalType":"struct MartianMarketWL.WLVendingObject","name":"object_","type":"tuple"}],"name":"WLVendingItemGifted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"indexed":false,"internalType":"struct MartianMarketWL.WLVendingItem","name":"before_","type":"tuple"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"indexed":false,"internalType":"struct MartianMarketWL.WLVendingItem","name":"after_","type":"tuple"}],"name":"WLVendingItemModified","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"purchaser_","type":"address"},{"indexed":false,"internalType":"uint256","name":"index_","type":"uint256"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"string","name":"tokenName","type":"string"},{"internalType":"string","name":"tokenImageUri","type":"string"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"price","type":"uint256"}],"indexed":false,"internalType":"struct MartianMarketWL.WLVendingObject","name":"object_","type":"tuple"}],"name":"WLVendingItemPurchased","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"contract_","type":"address"},{"indexed":true,"internalType":"address","name":"operator_","type":"address"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"indexed":false,"internalType":"struct MartianMarketWL.WLVendingItem","name":"item_","type":"tuple"}],"name":"WLVendingItemRemoved","type":"event"},{"inputs":[{"internalType":"address","name":"collector_","type":"address"}],"name":"G_setRegistrationCollector","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"price_","type":"uint256"}],"name":"G_setRegistrationPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"receiver_","type":"address"}],"name":"G_withdrawMESfromContract","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"MES","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"governor_","type":"address"}],"name":"O_setGovernorAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"}],"name":"O_setMES","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"}],"name":"O_setOwnershipController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"}],"name":"O_setPriceController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"superGovernor_","type":"address"}],"name":"O_setSuperGovernorAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"}],"name":"O_setTokenController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"OwnershipController","outputs":[{"internalType":"contract IOwnershipController","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PriceController","outputs":[{"internalType":"contract IPriceController","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"string","name":"projectName_","type":"string"},{"internalType":"string","name":"tokenName_","type":"string"},{"internalType":"string","name":"tokenImage_","type":"string"}],"name":"SG_SetContractToProjectInfo","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"bool","name":"bool_","type":"bool"}],"name":"SG_SetContractToVending","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"address","name":"unstuckOwner_","type":"address"}],"name":"SG_SetStuckOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"TokenController","outputs":[{"internalType":"contract ITokenController","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"internalType":"struct MartianMarketWL.WLVendingItem","name":"WLVendingItem_","type":"tuple"}],"name":"addWLVendingItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"burnAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"contractOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"contractToControllersApproved","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"contractToEnabled","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"contractToMESRegistry","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"contractToMarketAdminsApproved","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"contractToProjectInfo","outputs":[{"internalType":"string","name":"projectName","type":"string"},{"internalType":"string","name":"tokenName","type":"string"},{"internalType":"string","name":"tokenImageUri","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"contractToTreasuryAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"address","name":"","type":"address"}],"name":"contractToWLPurchased","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"contractToWLPurchasers","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"contractToWLVendingItems","outputs":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"deleteMostRecentWLVendingItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"enabledContracts","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"enabledContractsIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getAllEnabledContracts","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"getDefaultTokenImageOfContract","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"getDefaultTokenNameOfContract","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"getDefaultTokenOfContract","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"index_","type":"uint256"}],"name":"getFixedPriceOfItem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"getTreasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"index_","type":"uint256"}],"name":"getWLPurchasersOf","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"getWLVendingItemsLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"index_","type":"uint256"}],"name":"getWLVendingObject","outputs":[{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"string","name":"tokenName","type":"string"},{"internalType":"string","name":"tokenImageUri","type":"string"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"price","type":"uint256"}],"internalType":"struct MartianMarketWL.WLVendingObject","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"start_","type":"uint256"},{"internalType":"uint256","name":"end_","type":"uint256"}],"name":"getWLVendingObjectsPaginated","outputs":[{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"string","name":"tokenName","type":"string"},{"internalType":"string","name":"tokenImageUri","type":"string"},{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"price","type":"uint256"}],"internalType":"struct MartianMarketWL.WLVendingObject[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"index_","type":"uint256"},{"internalType":"address","name":"giftedAddress_","type":"address"}],"name":"giftPurchaserAsMarketAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"governorAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"address","name":"operator_","type":"address"}],"name":"isAuthorized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"address","name":"sender_","type":"address"}],"name":"isContractOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"address","name":"operator_","type":"address"},{"internalType":"bool","name":"bool_","type":"bool"}],"name":"manageController","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"address","name":"operator_","type":"address"},{"internalType":"bool","name":"bool_","type":"bool"}],"name":"manageMarketAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"index_","type":"uint256"},{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"internalType":"struct MartianMarketWL.WLVendingItem","name":"WLVendingItem_","type":"tuple"}],"name":"modifyWLVendingItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"index_","type":"uint256"}],"name":"purchaseWLVendingItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"raw_getWLVendingItemsAll","outputs":[{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"internalType":"struct MartianMarketWL.WLVendingItem[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"uint256","name":"start_","type":"uint256"},{"internalType":"uint256","name":"end_","type":"uint256"}],"name":"raw_getWLVendingItemsPaginated","outputs":[{"components":[{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"imageUri","type":"string"},{"internalType":"string","name":"projectUri","type":"string"},{"internalType":"string","name":"description","type":"string"},{"internalType":"uint32","name":"amountAvailable","type":"uint32"},{"internalType":"uint32","name":"amountPurchased","type":"uint32"},{"internalType":"uint32","name":"startTime","type":"uint32"},{"internalType":"uint32","name":"endTime","type":"uint32"},{"internalType":"uint256","name":"price","type":"uint256"}],"internalType":"struct MartianMarketWL.WLVendingItem[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"}],"name":"registerContractToVending","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"string","name":"projectName_","type":"string"},{"internalType":"string","name":"tokenName_","type":"string"},{"internalType":"string","name":"tokenImage_","type":"string"}],"name":"registerProjectInfo","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"registrationCollector","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registrationPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"requiresTokenOwnership","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"bool","name":"bool_","type":"bool"}],"name":"setRequiresTokenOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"contract_","type":"address"},{"internalType":"address","name":"treasury_","type":"address"}],"name":"setTreasuryAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"superGovernorAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"new_","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]`;
@@ -53,26 +57,36 @@ const getChainId = async () => { return await signer.getChainId() };
 
 // Initiate Contracts
 let market;
+let marketGated;
 let marketAddress;
+let marketAddressGated;
+
+let gatedCollections;
+let ungatedCollections;
 
 const setMarket = async () => {
     let currentChain = await getChainId();
     if (currentChain == 1) {
         marketAddress = marketAddressMainnet;
+        marketAddressGated = marketAddressMainnetGated;
     }
     else if (currentChain == 4) {
         marketAddress = marketAddressTestnet;
     }
     else if (currentChain == 10) {
         marketAddress = marketAddressOptimism;
+        marketAddressGated = marketAddressOptimismGated;
     }
     else if (currentChain == 42161) {
         marketAddress = marketAddressArbitrum;
+        marketAddressGated = marketAddressArbitrumGated;
     }
     else if (currentChain == 137) {
         marketAddress = marketAddressPolygon;
+        marketAddressGated = marketAddressPolygonGated;
     }
     market = new ethers.Contract(marketAddress, marketAbi(), signer);
+    marketGated = new ethers.Contract(marketAddressGated, marketAbi(), signer);
 }
 
 // General Variables
@@ -98,11 +112,17 @@ const loadingDiv = `<div id="ex1" class="partner-collection example">
 
 // Approval Functions
 
-var currentTokenAddress;
-var currentTokenImageURI;
+let currentTokenAddress;
+let currentTokenImageURI;
 
 const selectProject = async (address) => {
     if (address) {
+        if (gatedCollections.includes(address)) {
+            $("#approval-button").attr("onclick", "approveTokenToGatedMarket()")
+        }
+        else {
+            $("#approval-button").attr("onclick", "approveTokenToMarket()")
+        }
         $("#approval-button").html(`APPROVE`);
         $("#scroll-indicator").addClass("hidden");
         $("#uniswap-icon").removeClass("hidden");
@@ -141,7 +161,15 @@ const selectProject = async (address) => {
 const approveTokenToMarket = async () => {
     const token = new ethers.Contract(currentTokenAddress, baseTokenAbi(), signer);
     await token.approve(marketAddress, maxInt).then(async (tx_) => {
-        await waitForTransaction(tx_, true);
+        await waitForTransaction(tx_, false);
+        $("#approval-button").html(`Approving<span class="one">.</span><span class="two">.</span><span class="three">.</span>`)
+    });
+}
+
+const approveTokenToGatedMarket = async () => {
+    const token = new ethers.Contract(currentTokenAddress, baseTokenAbi(), signer);
+    await token.approve(marketAddressGated, maxInt).then(async (tx_) => {
+        await waitForTransaction(tx_, false);
         $("#approval-button").html(`Approving<span class="one">.</span><span class="two">.</span><span class="three">.</span>`)
     });
 }
@@ -150,6 +178,23 @@ const checkTokenApproval = async () => {
     if (currentTokenAddress) {
         const userAddress = await getAddress();
         const token = new ethers.Contract(currentTokenAddress, baseTokenAbi(), signer);
+
+        if (gatedCollections.includes(currentTokenAddress)) {
+            if (Number(await token.allowance(userAddress, marketAddressGated)) >= maxInt) {
+                $("#approval").addClass("hidden");
+            }
+            else {
+                $("#approval").removeClass("hidden");
+            }
+        }
+        else {
+            if (Number(await token.allowance(userAddress, marketAddress)) >= maxInt) {
+                $("#approval").addClass("hidden");
+            }
+            else {
+                $("#approval").removeClass("hidden");
+            }
+        }
 
         if (Number(await token.allowance(userAddress, marketAddress)) >= maxInt) {
             $("#approval").addClass("hidden");
@@ -177,11 +222,16 @@ const updateTokenBalance = async () => {
     }
 }
 
-var loadedCollections = false;
-var liveListings = [];
-var pendingListings = [];
-var liveTimerPending = [];
-var pendingTimerPending = [];
+let loadedCollections = false;
+let liveListings = [];
+let pendingListings = [];
+let liveTimerPending = [];
+let pendingTimerPending = [];
+
+let liveListingsGated = [];
+let pendingListingsGated = [];
+let liveTimerPendingGated = [];
+let pendingTimerPendingGated = [];
 
 setInterval(async () => {
     if (loadedCollections) {
@@ -192,9 +242,9 @@ setInterval(async () => {
                 let endTime = Number((await market.contractToWLVendingItems(currentTokenAddress, id)).endTime);
                 let distance = endTime - now;
 
-                var hours = Math.floor(distance / (60 * 60));
-                var minutes = Math.floor((distance % (60 * 60)) / (60));
-                var seconds = Math.floor((distance % (60)));
+                let hours = Math.floor(distance / (60 * 60));
+                let minutes = Math.floor((distance % (60 * 60)) / (60));
+                let seconds = Math.floor((distance % (60)));
 
                 if (hours < 10) {
                     hours = `0${hours}`;
@@ -228,6 +278,49 @@ setInterval(async () => {
 
 setInterval(async () => {
     if (loadedCollections) {
+        for (let i = 0; i < liveListingsGated.length; i++) {
+            if (liveTimerPendingGated[i]) {
+                let id = liveListingsGated[i];
+                let now = Date.now() / 1000;
+                let endTime = Number((await marketGated.contractToWLVendingItems(currentTokenAddress, id)).endTime);
+                let distance = endTime - now;
+
+                let hours = Math.floor(distance / (60 * 60));
+                let minutes = Math.floor((distance % (60 * 60)) / (60));
+                let seconds = Math.floor((distance % (60)));
+
+                if (hours < 10) {
+                    hours = `0${hours}`;
+                }
+                if (minutes < 10) {
+                    minutes = `0${minutes}`;
+                }
+                if (seconds < 10) {
+                    seconds = `0${seconds}`;
+                }
+
+                if (distance <= 0) {
+                    let blockTime = (await provider.getBlock((await provider.getBlockNumber()))).timestamp;
+                    if (blockTime > endTime) {
+                        liveTimerPendingGated[i] = false;
+                        $(`#timer-${id}-gated`).html("EXPIRED");
+                        $(`#timer-${id}-gated`).removeClass("pending");
+                    }
+                    else {
+                        $(`#timer-${id}-gated`).html(`ENDS NEXT BLOCK<span class="one">.</span><span class="two">.</span><span class="three">.</span>`);
+                    }
+                }
+                else {
+                    $(`#timer-${id}-gated`).html(`ENDS IN ${hours}:${minutes}:${seconds}`);
+                    $(`#timer-${id}-gated`).addClass("pending");
+                }
+            }
+        }
+    }
+}, 1000)
+
+setInterval(async () => {
+    if (loadedCollections) {
         for (let i = 0; i < pendingListings.length; i++) {
             if (pendingTimerPending[i]) {
                 let id = pendingListings[i];
@@ -235,9 +328,9 @@ setInterval(async () => {
                 let startTime = Number((await market.contractToWLVendingItems(currentTokenAddress, id)).startTime);
                 let distance = startTime - now;
 
-                var hours = Math.floor(distance / (60 * 60));
-                var minutes = Math.floor((distance % (60 * 60)) / (60));
-                var seconds = Math.floor((distance % (60)));
+                let hours = Math.floor(distance / (60 * 60));
+                let minutes = Math.floor((distance % (60 * 60)) / (60));
+                let seconds = Math.floor((distance % (60)));
 
                 if (hours < 10) {
                     hours = `0${hours}`;
@@ -269,21 +362,74 @@ setInterval(async () => {
     }
 }, 1000)
 
-const purchase = async (tokenAddress, id) => {
+setInterval(async () => {
+    if (loadedCollections) {
+        for (let i = 0; i < pendingListingsGated.length; i++) {
+            if (pendingTimerPendingGated[i]) {
+                let id = pendingListingsGated[i];
+                let now = Date.now() / 1000;
+                let startTime = Number((await marketGated.contractToWLVendingItems(currentTokenAddress, id)).startTime);
+                let distance = startTime - now;
+
+                let hours = Math.floor(distance / (60 * 60));
+                let minutes = Math.floor((distance % (60 * 60)) / (60));
+                let seconds = Math.floor((distance % (60)));
+
+                if (hours < 10) {
+                    hours = `0${hours}`;
+                }
+                if (minutes < 10) {
+                    minutes = `0${minutes}`;
+                }
+                if (seconds < 10) {
+                    seconds = `0${seconds}`;
+                }
+
+                if (distance <= 0) {
+                    let blockTime = (await provider.getBlock((await provider.getBlockNumber()))).timestamp;
+                    if (blockTime > startTime) {
+                        pendingTimerPendingGated[i] = false;
+                        $(`#timer-${id}`).html("LIVE NOW");
+                        $(`#timer-${id}`).removeClass("pending");
+                    }
+                    else {
+                        $(`#timer-${id}-gated`).html(`LIVE NEXT BLOCK<span class="one">.</span><span class="two">.</span><span class="three">.</span>`);
+                    }
+                }
+                else {
+                    $(`#timer-${id}-gated`).html(`LIVE IN ${hours}:${minutes}:${seconds}`);
+                    $(`#timer-${id}-gated`).addClass("pending");
+                }
+            }
+        }
+    }
+}, 1000)
+
+const purchase = async (tokenAddress, id, gated) => {
     try {
         if (!discordSet) {
             await displayErrorMessage("Error: Must set Discord ID to associate with purchases!")
             await promptForDiscord();
         }
         else {
-            const gasLimit = await market.estimateGas.purchaseWLVendingItem(tokenAddress, id);
-            const newGasLimit = parseInt((gasLimit * 1.15)).toString();
-            await market.purchaseWLVendingItem(tokenAddress, id, { gasLimit: newGasLimit }).then(async (tx_) => {
-                await waitForTransaction(tx_);
-            });
+            if (gated) {
+                const gasLimit = await marketGated.estimateGas.purchaseWLVendingItem(tokenAddress, id);
+                const newGasLimit = parseInt((gasLimit * 1.15)).toString();
+                await marketGated.purchaseWLVendingItem(tokenAddress, id, { gasLimit: newGasLimit }).then(async (tx_) => {
+                    await waitForTransaction(tx_);
+                });
+            }
+            else {
+                const gasLimit = await market.estimateGas.purchaseWLVendingItem(tokenAddress, id);
+                const newGasLimit = parseInt((gasLimit * 1.15)).toString();
+                await market.purchaseWLVendingItem(tokenAddress, id, { gasLimit: newGasLimit }).then(async (tx_) => {
+                    await waitForTransaction(tx_);
+                });
+            }
         }
     }
     catch (error) {
+        console.log(error.message)
         if ((error.message).includes("Already purchased")) {
             await displayErrorMessage(`Error: You already purchased a slot!`);
         }
@@ -343,122 +489,228 @@ const loadCollections = async () => {
     loadedCollections = false;
 
     const userAddress = await getAddress();
-    const numCollections = Number(await market.getWLVendingItemsLength(currentTokenAddress));
-    let allItems;
-    if (numCollections > 0) {
-        allItems = await market.getWLVendingObjectsPaginated(currentTokenAddress, 0, numCollections - 1);
-    }
-    else {
-        allItems = [];
-    }
-    let allItemIds = Array.from(Array(numCollections).keys());
-    const chunks = splitArrayToChunks(allItemIds, 5);
     let liveJSX = "";
     let pastJSX = "";
     let numLive = 0;
     let numPast = 0;
     let idToLiveJSX = new Map();
     let idToPastJSX = new Map();
-    for (const chunk of chunks) {
-        await Promise.all(chunk.map(async (id) => {
-            // WL data from contract
-            let WLinfo = allItems[id];
-            let collectionPrice = Number(formatEther(WLinfo.price));
-            let purchased = await market.contractToWLPurchased(currentTokenAddress, id, userAddress);
+    let numUngated = 0;
 
-            // Data from JSON file
-            let maxSlots = WLinfo.amountAvailable;
-            let minted = WLinfo.amountPurchased;
-            let started = (Date.now() / 1000) > WLinfo.startTime;
-            let valid = WLinfo.endTime > (Date.now() / 1000);
-            let imageUri = (WLinfo.imageUri).includes("https://") ? WLinfo.imageUri : `https://${WLinfo.imageUri}`;
-            let projectUri = (WLinfo.projectUri).includes("https://") ? WLinfo.projectUri : `https://${WLinfo.projectUri}`;
+    if (ungatedCollections.includes(currentTokenAddress)) {
+        numUngated = Number(await market.getWLVendingItemsLength(currentTokenAddress));
+        let allItems;
+        if (numUngated > 0) {
+            allItems = await market.getWLVendingObjectsPaginated(currentTokenAddress, 0, numUngated - 1);
+        }
+        else {
+            allItems = [];
+        }
+        let allItemIds = Array.from(Array(numUngated).keys());
+        const chunks = splitArrayToChunks(allItemIds, 5);
 
-            if (started && valid) {
-                liveListings.push(id);
-                liveTimerPending.push(true);
-                dateString = `Ends ${(new Date(WLinfo.endTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.endTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
-            }
-            else if (!started && valid) {
-                pendingListings.push(id);
-                pendingTimerPending.push(true);
-                dateString = `Starts ${(new Date(WLinfo.startTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.startTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
-            }
+        for (const chunk of chunks) {
+            await Promise.all(chunk.map(async (id) => {
+                // WL data from contract
+                let WLinfo = allItems[id];
+                let collectionPrice = Number(formatEther(WLinfo.price));
+                let purchased = await market.contractToWLPurchased(currentTokenAddress, id, userAddress);
 
-            if (minted != maxSlots && valid) {
-                numLive += 1;
-                let button;
-                if (purchased) {
-                    button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">PURCHASED!</button>`;
+                // Data from JSON file
+                let maxSlots = WLinfo.amountAvailable;
+                let minted = WLinfo.amountPurchased;
+                let started = (Date.now() / 1000) > WLinfo.startTime;
+                let valid = WLinfo.endTime > (Date.now() / 1000);
+                let imageUri = (WLinfo.imageUri).includes("https://") ? WLinfo.imageUri : `https://${WLinfo.imageUri}`;
+                let projectUri = (WLinfo.projectUri).includes("https://") ? WLinfo.projectUri : `https://${WLinfo.projectUri}`;
+
+                if (started && valid) {
+                    liveListings.push(id);
+                    liveTimerPending.push(true);
+                    dateString = `Ends ${(new Date(WLinfo.endTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.endTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                }
+                else if (!started && valid) {
+                    pendingListings.push(id);
+                    pendingTimerPending.push(true);
+                    dateString = `Starts ${(new Date(WLinfo.startTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.startTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                }
+
+                if (minted != maxSlots && valid) {
+                    numLive += 1;
+                    let button;
+                    if (purchased) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">PURCHASED!</button>`;
+                    }
+                    else {
+                        button = `<button class="mint-prompt-button button" id="${id}-mint-button" onclick="purchase('${currentTokenAddress}', ${id}, false)">PURCHASE</button>`;
+                    }
+                    let fakeJSX = `<div class="partner-collection" id="project-${id}">
+                                    <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
+                                    <h4 class="end-time" id="timer-${id}"><span class="one">.</span><span class="two">.</span><span class="three">.</span></h4>
+                                    <img class="collection-img" src="${imageUri}">
+                                    <div class="collection-info">
+                                        <h3>${(WLinfo.title).toUpperCase()}</h3>
+                                        <h4>${collectionPrice} <img src="${currentTokenImageURI}" class="token-icon">
+                                        <br>
+                                        <span id="${id}-supply">${minted}</span>/<span id="${id}-max-supply">${maxSlots}</span> Purchased
+                                        </h4>
+                                        <div class="inside-text collection-description">
+                                        ${(WLinfo.description).replaceAll("\n", "<br>")}
+                                        </div>
+                                    </div>
+                                    ${button}
+                                    </div>`
+
+                    idToLiveJSX.set(id, fakeJSX);
                 }
                 else {
-                    button = `<button class="mint-prompt-button button" id="${id}-mint-button" onclick="purchase('${currentTokenAddress}', ${id})">PURCHASE</button>`;
-                }
-                let fakeJSX = `<div class="partner-collection" id="project-${id}">
-                                <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
-                                <h4 class="end-time" id="timer-${id}"><span class="one">.</span><span class="two">.</span><span class="three">.</span></h4>
-                                <img class="collection-img" src="${imageUri}">
-                                <div class="collection-info">
-                                    <h3>${(WLinfo.title).toUpperCase()}</h3>
-                                    <h4>${collectionPrice} <img src="${currentTokenImageURI}" class="token-icon">
-                                    <br>
-                                    <span id="${id}-supply">${minted}</span>/<span id="${id}-max-supply">${maxSlots}</span> Purchased
-                                    </h4>
-                                    <div class="inside-text collection-description">
-                                    ${(WLinfo.description).replaceAll("\n", "<br>")}
+                    numPast += 1;
+                    let button;
+                    if (purchased) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">PURCHASED!</button>`;
+                    }
+                    else if (!valid) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">EXPIRED</button>`;
+                    }
+                    else if (minted == maxSlots) {
+                        button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">SOLD OUT</button>`;
+                    }
+                    let fakeJSX = `<div class="partner-collection" id="project-${id}">
+                                    <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
+                                    <img class="collection-img" src="${imageUri}">
+                                    <div class="collection-info">
+                                        <h3>${(WLinfo.title).toUpperCase()}</h3>
+                                        <h4>${collectionPrice} <img src="${currentTokenImageURI}" class="token-icon"> <br> <span id="${id}-supply">${minted}</span>/<span id="${id}-max-supply">${maxSlots}</span> Purchased</h4>
+                                        <div class="inside-text collection-description">
+                                        ${(WLinfo.description).replaceAll("\n", "<br>")}
+                                        </div>
                                     </div>
-                                </div>
-                                ${button}
-                                </div>`
+                                    ${button}
+                                    </div>`
 
-                idToLiveJSX.set(id, fakeJSX);
+                    idToPastJSX.set(id, fakeJSX);
+                }
+            }));
+        }
+
+        if (gatedCollections.includes(currentTokenAddress)) {
+            const numCollections = Number(await marketGated.getWLVendingItemsLength(currentTokenAddress));
+            let allItems;
+            if (numCollections > 0) {
+                allItems = await marketGated.getWLVendingObjectsPaginated(currentTokenAddress, 0, numCollections - 1);
             }
             else {
-                numPast += 1;
-                let button;
-                if (purchased) {
-                    button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">PURCHASED!</button>`;
-                }
-                else if (!valid) {
-                    button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">EXPIRED</button>`;
-                }
-                else if (minted == maxSlots) {
-                    button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button">SOLD OUT</button>`;
-                }
-                let fakeJSX = `<div class="partner-collection" id="project-${id}">
-                                <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
-                                <img class="collection-img" src="${imageUri}">
-                                <div class="collection-info">
-                                    <h3>${(WLinfo.title).toUpperCase()}</h3>
-                                    <h4>${collectionPrice} <img src="${currentTokenImageURI}" class="token-icon"> <br> <span id="${id}-supply">${minted}</span>/<span id="${id}-max-supply">${maxSlots}</span> Purchased</h4>
-                                    <div class="inside-text collection-description">
-                                    ${(WLinfo.description).replaceAll("\n", "<br>")}
-                                    </div>
-                                </div>
-                                ${button}
-                                </div>`
-
-                idToPastJSX.set(id, fakeJSX);
+                allItems = [];
             }
-        }));
-    }
+            let allItemIds = Array.from(Array(numCollections).keys());
+            const chunks = splitArrayToChunks(allItemIds, 5);
 
-    let liveIds = Array.from(idToLiveJSX.keys()).map(Number).sort(function (a, b) { return b - a });
-    let pastIds = Array.from(idToPastJSX.keys()).map(Number).sort(function (a, b) { return b - a });
-    for (const liveId of liveIds) {
-        liveJSX += idToLiveJSX.get(liveId);
-    }
-    for (const pastId of pastIds) {
-        pastJSX += idToPastJSX.get(pastId);
-    }
 
-    $("#live-collections").empty();
-    $("#past-collections").empty();
-    $("#live-collections").append(liveJSX);
-    $("#past-collections").append(pastJSX);
-    $("#num-live").html(`<br>(${numLive})`);
-    $("#num-past").html(`<br>(${numPast})`);
-    loadedCollections = true;
+            for (const chunk of chunks) {
+                await Promise.all(chunk.map(async (id) => {
+                    // WL data from contract
+                    let WLinfo = allItems[id];
+                    let collectionPrice = Number(formatEther(WLinfo.price));
+                    let purchased = await marketGated.contractToWLPurchased(currentTokenAddress, id, userAddress);
+
+                    // Data from JSON file
+                    let maxSlots = WLinfo.amountAvailable;
+                    let minted = WLinfo.amountPurchased;
+                    let started = (Date.now() / 1000) > WLinfo.startTime;
+                    let valid = WLinfo.endTime > (Date.now() / 1000);
+                    let imageUri = (WLinfo.imageUri).includes("https://") ? WLinfo.imageUri : `https://${WLinfo.imageUri}`;
+                    let projectUri = (WLinfo.projectUri).includes("https://") ? WLinfo.projectUri : `https://${WLinfo.projectUri}`;
+
+                    if (started && valid) {
+                        liveListingsGated.push(id);
+                        liveTimerPendingGated.push(true);
+                        dateString = `Ends ${(new Date(WLinfo.endTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.endTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                    }
+                    else if (!started && valid) {
+                        pendingListingsGated.push(id);
+                        pendingTimerPendingGated.push(true);
+                        dateString = `Starts ${(new Date(WLinfo.startTime * 1000)).toLocaleDateString()} ${(new Date(WLinfo.startTime * 1000)).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+                    }
+
+                    if (minted != maxSlots && valid) {
+                        numLive += 1;
+                        let button;
+                        if (purchased) {
+                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">PURCHASED!</button>`;
+                        }
+                        else {
+                            button = `<button class="mint-prompt-button button" id="${id}-mint-button-gated" onclick="purchase('${currentTokenAddress}', ${id}, true)">PURCHASE</button>`;
+                        }
+                        let fakeJSX = `<div class="partner-collection" id="project-${id}-gated">
+                                    <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
+                                    <h4 class="end-time" id="timer-${id}-gated"><span class="one">.</span><span class="two">.</span><span class="three">.</span></h4>
+                                    <img class="collection-img" src="${imageUri}">
+                                    <div class="collection-info">
+                                        <h3>${(WLinfo.title).toUpperCase()}</h3>
+                                        <h4>${collectionPrice} <img src="${currentTokenImageURI}" class="token-icon">
+                                        <br>
+                                        <span id="${id}-supply-gated">${minted}</span>/<span id="${id}-max-supply">${maxSlots}</span> Purchased
+                                        </h4>
+                                        <div class="inside-text collection-description">
+                                        ${(WLinfo.description).replaceAll("\n", "<br>")}
+                                        </div>
+                                    </div>
+                                    ${button}
+                                    </div>`
+
+                        idToLiveJSX.set(id, fakeJSX);
+                    }
+                    else {
+                        numPast += 1;
+                        let button;
+                        if (purchased) {
+                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">PURCHASED!</button>`;
+                        }
+                        else if (!valid) {
+                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">EXPIRED</button>`;
+                        }
+                        else if (minted == maxSlots) {
+                            button = `<button disabled class="mint-prompt-button button purchased" id="${id}-mint-button-gated">SOLD OUT</button>`;
+                        }
+                        let fakeJSX = `<div class="partner-collection" id="project-${id}">
+                                    <a class="clickable link" href="${projectUri}" target="_blank" style="text-decoration: none;"><img class="website" src="./images/website.png"></a>
+                                    <img class="collection-img" src="${imageUri}">
+                                    <div class="collection-info">
+                                        <h3>${(WLinfo.title).toUpperCase()}</h3>
+                                        <h4>${collectionPrice} <img src="${currentTokenImageURI}" class="token-icon"> <br> <span id="${id}-supply-gated">${minted}</span>/<span id="${id}-max-supply">${maxSlots}</span> Purchased</h4>
+                                        <div class="inside-text collection-description">
+                                        ${(WLinfo.description).replaceAll("\n", "<br>")}
+                                        </div>
+                                    </div>
+                                    ${button}
+                                    </div>`
+
+                        idToPastJSX.set(id + numUngated, fakeJSX);
+                    }
+                }));
+            }
+
+
+
+        }
+
+        let liveIds = Array.from(idToLiveJSX.keys()).map(Number).sort(function (a, b) { return b - a });
+        let pastIds = Array.from(idToPastJSX.keys()).map(Number).sort(function (a, b) { return b - a });
+        for (const liveId of liveIds) {
+            liveJSX += idToLiveJSX.get(liveId);
+        }
+        for (const pastId of pastIds) {
+            pastJSX += idToPastJSX.get(pastId);
+        }
+
+        $("#live-collections").empty();
+        $("#past-collections").empty();
+        $("#live-collections").append(liveJSX);
+        $("#past-collections").append(pastJSX);
+        $("#num-live").html(`<br>(${numLive})`);
+        $("#num-past").html(`<br>(${numPast})`);
+        loadedCollections = true;
+    }
 }
 
 const updateSupplies = async () => {
@@ -484,13 +736,37 @@ const updateSupplies = async () => {
     }
 }
 
+const updateGatedSupplies = async () => {
+    let userAddress = await getAddress();
+    let numListings = Number(await marketGated.getWLVendingItemsLength(currentTokenAddress));
+    for (let id = 0; id < numListings; id++) {
+        let buyers = await marketGated.getWLPurchasersOf(currentTokenAddress, id);
+        let WLinfo = await marketGated.contractToWLVendingItems(currentTokenAddress, id);
+        let maxSlots = WLinfo.amountAvailable;
+        let minted = WLinfo.amountPurchased;
+        let purchased = buyers.includes(userAddress);
+        if (purchased) {
+            $(`#${id}-mint-button-gated`).text("PURCHASED");
+            $(`#${id}-mint-button-gated`).addClass("purchased");
+            $(`#${id}-mint-button-gated`).prop("disabled", true);
+        }
+        else if (minted == maxSlots) {
+            $(`#${id}-mint-button-gated`).text("SOLD OUT");
+            $(`#${id}-mint-button-gated`).addClass("purchased");
+            $(`#${id}-mint-button-gated`).prop("disabled", true);
+        }
+        $(`#${id}-supply-gated`).text(minted);
+    }
+}
+
 const loadPartnerCollections = async () => {
-    let collections = await market.getAllEnabledContracts();
+    ungatedCollections = await market.getAllEnabledContracts();
+    gatedCollections = await marketGated.getAllEnabledContracts();
     let fakeJSX = "";
     let userAddress = await getAddress();
     let projectToAddress = new Map();
-    for (let i = 0; i < collections.length; i++) {
-        let address = collections[i];
+    for (let i = 0; i < ungatedCollections.length; i++) {
+        let address = ungatedCollections[i];
         try {
             if ((await market.isAuthorized(address, userAddress))) {
                 $("#workshop-link").removeClass("hidden");
@@ -501,6 +777,21 @@ const loadPartnerCollections = async () => {
             console.log("Error with auth check:", error);
         }
         let projectInfo = await market.contractToProjectInfo(address);
+        projectToAddress.set(projectInfo.projectName, address);
+    }
+
+    for (let i = 0; i < gatedCollections.length; i++) {
+        let address = gatedCollections[i];
+        try {
+            if ((await marketGated.isAuthorized(address, userAddress))) {
+                $("#workshop-link").removeClass("hidden");
+                $("#mobile-workshop-link").removeClass("hidden");
+            }
+        }
+        catch (error) {
+            console.log("Error with auth check:", error);
+        }
+        let projectInfo = await marketGated.contractToProjectInfo(address);
         projectToAddress.set(projectInfo.projectName, address);
     }
 
@@ -515,15 +806,15 @@ const loadPartnerCollections = async () => {
 // Processing txs
 
 // After Tx Hook
-const waitForTransaction = async (tx_, approval = false) => {
+const waitForTransaction = async (tx_, purchase = true) => {
     startLoading(tx_);
     provider.once(tx_.hash, async (transaction_) => {
-        await endLoading(tx_, transaction_.status, approval);
+        await endLoading(tx_, transaction_.status, purchase);
     });
 };
 
 // Resuming UI display, refreshing market for pending txs across pages
-var pendingTransactions = localStorage.getItem("MartianMarketPendingTxs");
+let pendingTransactions = localStorage.getItem("MartianMarketPendingTxs");
 
 if (!pendingTransactions) {
     pendingTransactions = new Set();
@@ -551,14 +842,14 @@ function startLoading(tx) {
     pendingTransactions.add(tx);
 }
 
-async function endLoading(tx, txStatus, approval) {
+async function endLoading(tx, txStatus, purchase) {
     let txHash = tx.hash;
     $(`#loading-div-${txHash}`).html("");
     let status = txStatus == 1 ? "SUCCESS" : "ERROR";
     $(`#loading-div-${txHash}`).addClass("blinking");
     if (txStatus == 1) {
         $(`#loading-div-${txHash}`).addClass("success");
-        if (!approval) {
+        if (purchase) {
             await showTransactionResult(1);
         }
     }
@@ -572,10 +863,11 @@ async function endLoading(tx, txStatus, approval) {
     pendingTransactions.delete(tx);
     if (pendingTransactions.size == 0) {
         await updateSupplies();
+        await updateGatedSupplies();
     }
 }
 
-var chainLogoSet = false;
+let chainLogoSet = false;
 
 const setChainLogo = async () => {
     let chainLogo = "";
@@ -613,6 +905,7 @@ setInterval(async () => {
     await updateTokenBalance();
     if (loadedCollections) {
         await updateSupplies();
+        await updateGatedSupplies();
     }
 }, 5000)
 

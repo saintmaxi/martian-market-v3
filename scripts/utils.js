@@ -267,7 +267,7 @@ const setDiscord = async () => {
         }
         else {
             await identityMapper.setDiscordIdentity(name).then(async (tx_) => {
-                await waitForTransaction(tx_);
+                await waitForTransaction(tx_, false);
                 $("#set-discord-button").html(`Setting<span class="one">.</span><span class="two">.</span><span class="three">.</span>`)
                 $('#discord-popup').remove();
                 $('#block-screen-discord').remove();
@@ -286,8 +286,8 @@ const setDiscord = async () => {
     }
 }
 
-var tries = 0;
-var discordSet = false;
+let tries = 0;
+let discordSet = false;
 
 const updateDiscord = async () => {
     if (!discordSet) {
@@ -321,7 +321,7 @@ const updateDiscord = async () => {
     }
 }
 
-var timeout = 100;
+let timeout = 100;
 
 setInterval(async () => {
     await setIdentityMapper();
