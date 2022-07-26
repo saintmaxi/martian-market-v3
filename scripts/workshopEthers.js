@@ -348,7 +348,7 @@ const modifyListing = async () => {
             await displayErrorMessage("Error: Start time must be before deadline!");
         }
         else {
-            if (gatedCollections.includes(address)) {
+            if (gatedCollections.includes(currentlySelectedContract)) {
                 const gasLimit = await marketGated.estimateGas.modifyWLVendingItem(currentlySelectedContract, currentlySelectedListing, [title, image, siteFormatted, description, amount, purchased, start, deadline, price]);
                 const newGasLimit = parseInt((gasLimit * 1.15)).toString();
                 await marketGated.modifyWLVendingItem(currentlySelectedContract, currentlySelectedListing, [title, image, siteFormatted, description, amount, purchased, start, deadline, price], { gasLimit: newGasLimit }).then(async (tx_) => {
