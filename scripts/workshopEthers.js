@@ -232,10 +232,10 @@ const loadListings = async (address) => {
     let fakeJSX = "";
     let listings;
     if (gatedCollections.includes(address)) {
-        listings = await market.raw_getWLVendingItemsAll(address);
+        listings = await marketGated.raw_getWLVendingItemsAll(address);
     }
     else {
-        listings = await marketGated.raw_getWLVendingItemsAll(address);
+        listings = await market.raw_getWLVendingItemsAll(address);
     }
     for (let i = 0; i < listings.length; i++) {
         let WLinfo = listings[i];
@@ -273,7 +273,13 @@ let currentlySelectedListing;
 
 const selectListing = async (id) => {
     currentlySelectedListing = Number(id);
-    let currentlySelectedWLinfo = await market.contractToWLVendingItems(currentlySelectedContract, id);
+    let currentlySelectedWLinfo;
+    if (gatedCollections.includes(currentlySelectedContract)) {
+        currentlySelectedWLinfo = await marketGated.contractToWLVendingItems(currentlySelectedContract, id);
+    }
+    else {
+        currentlySelectedWLinfo = await market.contractToWLVendingItems(currentlySelectedContract, id);
+    }
     let title = currentlySelectedWLinfo.title;
     let image = currentlySelectedWLinfo.imageUri;
     let site = (currentlySelectedWLinfo.projectUri).includes("https://") ? currentlySelectedWLinfo.projectUri : `https://${currentlySelectedWLinfo.projectUri}`;
@@ -297,7 +303,13 @@ const selectListing = async (id) => {
 
 const generateModify = async () => {
     let mode = "modify";
-    let currentlySelectedWLinfo = await market.contractToWLVendingItems(currentlySelectedContract, currentlySelectedListing);
+    let currentlySelectedWLinfo;
+    if (gatedCollections.includes(currentlySelectedContract)) {
+        currentlySelectedWLinfo = await marketGated.contractToWLVendingItems(currentlySelectedContract, currentlySelectedListing);
+    }
+    else {
+        currentlySelectedWLinfo = await market.contractToWLVendingItems(currentlySelectedContract, currentlySelectedListing);
+    }
     let title = $("#modify-input #listing-title").val() ? $("#modify-input #listing-title").val() : currentlySelectedWLinfo.title;
     let image = $("#modify-input #listing-image").val() ? $("#modify-input #listing-image").val() : currentlySelectedWLinfo.imageUri;
     let site = $("#modify-input #listing-site").val() ? $("#modify-input #listing-site").val() : currentlySelectedWLinfo.projectUri;
@@ -327,7 +339,13 @@ const generateModify = async () => {
 
 const modifyListing = async () => {
     try {
-        let currentlySelectedWLinfo = await market.contractToWLVendingItems(currentlySelectedContract, currentlySelectedListing);
+        let currentlySelectedWLinfo;
+        if (gatedCollections.includes(currentlySelectedContract)) {
+            currentlySelectedWLinfo = await marketGated.contractToWLVendingItems(currentlySelectedContract, currentlySelectedListing);
+        }
+        else {
+            currentlySelectedWLinfo = await market.contractToWLVendingItems(currentlySelectedContract, currentlySelectedListing);
+        }
         let title = $("#modify-input #listing-title").val() ? $("#modify-input #listing-title").val() : currentlySelectedWLinfo.title;
         let image = $("#modify-input #listing-image").val() ? $("#modify-input #listing-image").val() : currentlySelectedWLinfo.imageUri;
         let site = $("#modify-input #listing-site").val() ? $("#modify-input #listing-site").val() : currentlySelectedWLinfo.projectUri;
