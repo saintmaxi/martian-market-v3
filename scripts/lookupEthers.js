@@ -50,11 +50,13 @@ if (window.ethereum == undefined) {
 const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 const signer = provider.getSigner();
 
+let currentChain;
+
 let market;
 let marketGated;
 
 const setMarket = async () => {
-    let currentChain = await getChainId();
+    currentChain = await getChainId();
     let marketAddress;
     let marketAddressGated;
     if (currentChain == 1) {
@@ -115,7 +117,6 @@ let myWL = [];
 const loadCollectionsData = async () => {
     now = Date.now()
 
-    let currentChain = await getChainId();
     if (currentChain == 1) {
         let userAddress = await getAddress();
         const jsonData = await fetch(`https://n6uswzj9gd.execute-api.us-east-1.amazonaws.com/prod/martian-market-lookup-API`).then(res => res.json());
@@ -375,8 +376,7 @@ function cachePendingTransactions() {
 
 function startLoading(tx) {
     let txHash = tx.hash;
-    let chainID = await getChainId();
-    const blockExplorerLink = `${networkToBlockExplorer[chainID]}/tx/${txHash}`;
+    const blockExplorerLink = `${networkToBlockExplorer[currentChain]}/tx/${txHash}`;
     const loadingDiv = `<a href="${blockExplorerLink}" class="etherscan-link" id="etherscan-link-${txHash}" target="_blank" rel="noopener noreferrer"><div class="loading-div" id="loading-div-${txHash}">PROCESSING<span class="one">.</span><span class="two">.</span><span class="three">.</span>​<br>CLICK FOR ETHERSCAN</div></a><br>`;
     $("#pending-transactions").append(loadingDiv);
     pendingTransactions.add(tx);
@@ -407,17 +407,16 @@ let chainLogoSet = false;
 
 const setChainLogo = async () => {
     let chainLogo = "";
-    let chain = await getChainId();
-    if (chain == 1 || chain == 4) {
+    if (currentChain == 1 || chain == 4) {
         chainLogo = "<img src='https://github.com/saintmaxi/wl-market-L1/blob/main/images/eth.png?raw=true' class='token-icon'>";
     }
-    else if (chain == 10) {
+    else if (currentChain == 10) {
         chainLogo = "<img src='https://github.com/saintmaxi/wl-market-L1/blob/main/images/optimism.png?raw=true' class='token-icon'>";
     }
-    else if (chain == 42161) {
+    else if (currentChain == 42161) {
         chainLogo = "<img src='https://github.com/saintmaxi/wl-market-L1/blob/main/images/arbitrum.png?raw=true' class='token-icon'>";
     }
-    else if (chain == 137) {
+    else if (currentChain == 137) {
         chainLogo = "<img src='https://github.com/saintmaxi/wl-market-L1/blob/main/images/polygon.png?raw=true' class='token-icon'>";
     }
     chainLogoSet = true;
