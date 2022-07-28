@@ -407,7 +407,7 @@ let chainLogoSet = false;
 
 const setChainLogo = async () => {
     let chainLogo = "";
-    if (currentChain == 1 || chain == 4) {
+    if (currentChain == 1 || currentChain == 4) {
         chainLogo = "<img src='https://github.com/saintmaxi/wl-market-L1/blob/main/images/eth.png?raw=true' class='token-icon'>";
     }
     else if (currentChain == 10) {

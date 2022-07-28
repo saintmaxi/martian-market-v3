@@ -149,23 +149,26 @@ const selectProject = async (address) => {
         if (gatedCollections.includes(address)) {
             let isGated = await marketGated.requiresTokenOwnership(address);
             if (isGated) {
-                let permittedCollections = [];
-                let reachedError = false;
-                let index = 0;
-                while (!reachedError) {
-                    try {
-                        let permittedCollection = await ownershipController.contractToOwnershipTokens(address, index);
-                        permittedCollections.push(permittedCollection)
-                        index += 1;
+                let userAddress = await getAddress();
+                let ownsToken = await ownershipController.hasOwnershipOfToken(address, userAddress);
+                if (!ownsToken) {
+                    let permittedCollections = [];
+                    let reachedError = false;
+                    let index = 0;
+                    while (!reachedError) {
+                        try {
+                            let permittedCollection = await ownershipController.contractToOwnershipTokens(address, index);
+                            permittedCollections.push(permittedCollection)
+                            index += 1;
+                        }
+                        catch {
+                            reachedError = true;
+                        }
                     }
-                    catch {
-                        reachedError = true;
-                    }
+                    let permittedCollectionsJSX = permittedCollections.map(collection => `<a class="link" target="_blank" href="${networkToBlockExplorer[currentChain]}/address/${collection}">${collection}</a>`);
+                    $("#permitted-collections").html(permittedCollectionsJSX.join("<br>"))
+                    $("#gated-wrapper").removeClass("hidden");
                 }
-                let permittedCollectionsJSX = permittedCollections.map(collection => `<a class="link" target="_blank" href="${networkToBlockExplorer[currentChain]}/address/${collection}">${collection}</a>`);
-                $("#permitted-collections").html(permittedCollectionsJSX.join("<br>"))
-                $("#gated-wrapper").removeClass("hidden");
-
             }
             $("#approval-button").attr("onclick", "approveTokenToGatedMarket()")
         }
@@ -912,7 +915,7 @@ let chainLogoSet = false;
 
 const setChainLogo = async () => {
     let chainLogo = "";
-    if (currentChain == 1 || chain == 4) {
+    if (currentChain == 1 || currentChain == 4) {
         chainLogo = "<img onclick='displayNetworkPrompt()' src='https://github.com/saintmaxi/wl-market-L1/blob/main/images/eth.png?raw=true' class='token-icon'>";
     }
     else if (currentChain == 10) {
