@@ -375,6 +375,7 @@ function cachePendingTransactions() {
 
 function startLoading(tx) {
     let txHash = tx.hash;
+    let chainID = await getChainId();
     const blockExplorerLink = `${networkToBlockExplorer[chainID]}/tx/${txHash}`;
     const loadingDiv = `<a href="${blockExplorerLink}" class="etherscan-link" id="etherscan-link-${txHash}" target="_blank" rel="noopener noreferrer"><div class="loading-div" id="loading-div-${txHash}">PROCESSING<span class="one">.</span><span class="two">.</span><span class="three">.</span>​<br>CLICK FOR ETHERSCAN</div></a><br>`;
     $("#pending-transactions").append(loadingDiv);
